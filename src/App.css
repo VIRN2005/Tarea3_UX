@@ -36,7 +36,7 @@ h1 {
   margin-bottom: 1rem;
 }
 
-.ToDo-input {
+.ToDo_Edit {
   outline: none;
   background: none;
   border: 1px solid #f89500;
@@ -47,12 +47,12 @@ h1 {
   color: #fff;
 }
 
-.ToDo-input::placeholder {
+.ToDo::placeholder {
   color: #ffffff4d;
 }
 
-.ToDo-btn {
-  background: #8758ff;
+.ToDo_Btn {
+  background: #f89500;
   color: #fff;
   border: none;
   padding: 0.55rem;
