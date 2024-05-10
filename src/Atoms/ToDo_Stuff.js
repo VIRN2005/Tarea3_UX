@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import ToDo_Form from "./ToDo_Form";
 import { v4 as uuidv4 } from "uuid";
-
+import ToDo from "./ToDo";
 uuidv4();
 
 const ToDo_Stuff = () => {
-  const [ToDo, SetToDo] = useState([]);
+  const [ToDos, SetToDo] = useState([]);
 
-  const addToDo = (ToDo) => {
+  const addToDo = (ToDos) => {
     SetToDo([
-      ...ToDo,
-      { id: uuidv4(), task: ToDo, completed: false, isEdit: false },
+      ...ToDos,
+      { id: uuidv4(), task: ToDos, completed: false, isEditing: false },
     ]);
     console.log(ToDo);
   };
@@ -18,6 +18,7 @@ const ToDo_Stuff = () => {
   return (
     <div className="ToDo_Stuff">
       <ToDo_Form addToDo={addToDo} />
+      <ToDo />
     </div>
   );
 };
