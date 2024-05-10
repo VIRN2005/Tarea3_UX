@@ -8,7 +8,7 @@
 }
 
 body {
-  background: #87f303;
+  background: #aaff00d2;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,10 +25,10 @@ h1 {
 }
 
 .ToDo_Stuff {
-  background: #1A1A40;
+  background: #25252c;
   margin-top: 5rem;
   padding: 2rem;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .ToDo_Stuff {
