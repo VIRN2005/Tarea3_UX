@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ToDo_Form from "./ToDo_Form";
 import { v4 as uuidv4 } from "uuid";
 import ToDo from "./ToDo";
+import ToDo_Edit from "./ToDo_Edit";
 
 const ToDo_Stuff = () => {
   const [ToDos, SetToDos] = useState([]);
@@ -21,13 +22,43 @@ const ToDo_Stuff = () => {
     );
   };
 
+  const deleteToDo = (id) => {
+    SetToDos(ToDos.filter((ToDo) => ToDo.id !== id));
+  };
+
+  const editToDo = (id) => {
+    SetToDos(
+      ToDos.map((ToDo) =>
+        ToDo.id === id ? { ...ToDo, isEditing: !ToDo.isEditing } : ToDo
+      )
+    );
+  };
+
+  const editTask = (task, id) => {
+    SetToDos(
+      ToDos.map((ToDo) =>
+        ToDo.id === id ? { ...ToDo, task, isEditing: !ToDo.isEditing } : ToDo
+      )
+    );
+  };
+
   return (
     <div className="ToDo_Stuff">
       <h1>THINGS TO DO!</h1>
       <ToDo_Form addToDo={addToDo} />
-      {ToDos.map((ToDo1, index) => (
-        <ToDo task={ToDo1} key={index} toggleComplete={toggleComplete} />
-      ))}
+      {ToDos.map((ToDo1) =>
+        ToDo1.isEditing ? (
+          <ToDo_Edit editToDo={editTask} task={ToDo} />
+        ) : (
+          <ToDo
+            task={ToDo1}
+            key={ToDo1.id}
+            toggleComplete={toggleComplete}
+            deleteToDo={deleteToDo}
+            editToDo={editToDo}
+          />
+        )
+      )}
     </div>
   );
 };

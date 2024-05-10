@@ -5,8 +5,10 @@ const ToDo_Form = ({ addToDo }) => {
 
   const submit = (event) => {
     event.preventDefault();
-    addToDo(val);
-    setVal("");
+    if (val) {
+      addToDo(val);
+      setVal("");
+    }
   };
 
   return (

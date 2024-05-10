@@ -1,23 +1,29 @@
-import React from "react";
-import { ToDo } from "./ToDo";
-import ToDo_Form, { TodoForm } from "./ToDo_Form";
-import { v4 as uuidv4 } from "uuid";
+import React, { useState } from "react";
 
-export const ToDo_Edit = () => {
-  const [ToDo, setToDo] = useState([]);
+const ToDo_Edit = ({ editToDo, task }) => {
+  const [val, setVal] = useState(task.task);
 
-  const addToDo = (ToDo) => {
-    setToDo([
-      ...ToDo,
-      { id: uuidv4(), task: ToDo, completed: false, isEditing: false },
-    ]);
-    console.log(ToDo);
+  const submit = (event) => {
+    event.preventDefault();
+    if (val) {
+      editToDo(val);
+      setVal("");
+    }
   };
 
   return (
-    <div className="ToDo_Stuff">
-      <ToDo_Form addToDo={addToDo} />
-    </div>
+    <form className="ToDo_Form" onSubmit={submit}>
+      <input
+        type="Text"
+        className="ToDo_Edit"
+        value={val}
+        placeholder="Update Tasks"
+        onChange={(event) => setVal(event.target.value)}
+      />
+      <button type="submit" className="ToDo_Btn">
+        Add Task
+      </button>
+    </form>
   );
 };
 
