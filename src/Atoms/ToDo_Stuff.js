@@ -13,11 +13,20 @@ const ToDo_Stuff = () => {
     ]);
   };
 
+  const toggleComplete = (id) => {
+    SetToDos(
+      ToDos.map((ToDo) =>
+        ToDo.id === id ? { ...ToDo, completed: !ToDo.completed } : ToDo
+      )
+    );
+  };
+
   return (
     <div className="ToDo_Stuff">
+      <h1>THINGS TO DO!</h1>
       <ToDo_Form addToDo={addToDo} />
       {ToDos.map((ToDo1, index) => (
-        <ToDo task={ToDo1} key={index} />
+        <ToDo task={ToDo1} key={index} toggleComplete={toggleComplete} />
       ))}
     </div>
   );
