@@ -6,7 +6,7 @@ const ToDo_Edit = ({ editToDo, task }) => {
   const submit = (event) => {
     event.preventDefault();
     if (val) {
-      editToDo(val);
+      editToDo(val, task.id);
       setVal("");
     }
   };
@@ -21,7 +21,7 @@ const ToDo_Edit = ({ editToDo, task }) => {
         onChange={(event) => setVal(event.target.value)}
       />
       <button type="submit" className="ToDo_Btn">
-        Add Task
+        Update Task
       </button>
     </form>
   );

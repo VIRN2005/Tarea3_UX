@@ -28,16 +28,16 @@ const ToDo_Stuff = () => {
 
   const editToDo = (id) => {
     SetToDos(
-      ToDos.map((ToDo) =>
-        ToDo.id === id ? { ...ToDo, isEditing: !ToDo.isEditing } : ToDo
+      ToDos.map((ToDo1) =>
+        ToDo1.id === id ? { ...ToDo1, isEditing: !ToDo1.isEditing } : ToDo1
       )
     );
   };
 
   const editTask = (task, id) => {
     SetToDos(
-      ToDos.map((ToDo) =>
-        ToDo.id === id ? { ...ToDo, task, isEditing: !ToDo.isEditing } : ToDo
+      ToDos.map((ToDo1) =>
+        ToDo1.id === id ? { ...ToDo1, task, isEditing: !ToDo1.isEditing } : ToDo1
       )
     );
   };
@@ -48,7 +48,7 @@ const ToDo_Stuff = () => {
       <ToDo_Form addToDo={addToDo} />
       {ToDos.map((ToDo1) =>
         ToDo1.isEditing ? (
-          <ToDo_Edit editToDo={editTask} task={ToDo} />
+          <ToDo_Edit editToDo={editTask} task={ToDo1} />
         ) : (
           <ToDo
             task={ToDo1}
